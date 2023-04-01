@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import './PopularList.css'
 
 export const PopularList = () => {
   const [list, setList] = useState([]);
   const [loading, setLoading] = useState(false);
+  const { type } = useParams();
 
   useEffect(() => {
     setLoading(true);
-    fetch('https://api.themoviedb.org/3/movie/popular?api_key=bdc909b4c34b17568b8111077d9d4d62&language=en-US&page=1')
+    fetch(`https://api.themoviedb.org/3/movie/${type}?api_key=bdc909b4c34b17568b8111077d9d4d62&language=en-US&page=1`)
       .then((res) => res.json())
       .then((data) => {
         setList(data.results)
@@ -19,7 +20,7 @@ export const PopularList = () => {
       .finally(() => {
         setLoading(false);
       })
-  }, []);
+  }, [type]);
 
   if (loading) {
     return (

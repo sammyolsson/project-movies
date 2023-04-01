@@ -1,0 +1,16 @@
+.navbar ul {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+li {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+a.active {
+    text-decoration: underline 4px rgb(70, 73, 221);
+}
